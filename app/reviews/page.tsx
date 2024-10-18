@@ -1,11 +1,11 @@
 import React from 'react';
-import RatingList from '../components/RatingList'; // Reusing the RatingList component
+import RatingList from '../components/RatingList'; // Ensure the correct path
 
 const ReviewsPage: React.FC = () => {
     return (
         <div>
-            <h1>Employee Reviews</h1>
-            <RatingList />
+            <h1>All Reviews</h1>
+            <RatingList /> {/* Display the list of reviews */}
         </div>
     );
 };

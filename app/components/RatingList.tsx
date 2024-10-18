@@ -1,32 +1,28 @@
-"use client"; // This must be at the top to mark it as a Client Component
-
-import React, { useState } from "react";
-
-type Rating = {
-    name: string;
-    rating: number;
-    comment: string;
-};
-
-const mockRatings: Rating[] = [
-    { name: "John Doe", rating: 5, comment: "Great place to work!" },
-    { name: "Jane Smith", rating: 4, comment: "Good work-life balance." }
-];
+"use client";
+import React from 'react';
+import { useReviews } from '../context/ReviewContext'; // Import useReviews to access reviews
 
 const RatingList: React.FC = () => {
-    const [ratings] = useState<Rating[]>(mockRatings);
+    const { reviews } = useReviews(); // Get the reviews from the global context
 
     return (
         <div>
-            <h2>Employee Ratings</h2>
-            {ratings.length === 0 ? (
-                <p>No ratings yet.</p>
+            <h2>Employee Reviews</h2>
+            {reviews.length === 0 ? (
+                <p>No reviews yet.</p>
             ) : (
                 <ul>
-                    {ratings.map((rating, index) => (
-                        <li key={index}>
-                            <strong>{rating.name}</strong> rated <strong>{rating.rating}</strong>:
-                            <p>{rating.comment}</p>
+                    {reviews.map((review, index) => (
+                        <li key={index} style={{ marginBottom: '20px' }}>
+                            <strong>{review.name}</strong> reviewed <strong>{review.company}</strong>:
+                            <div className="stars">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                    <span key={i} className={i < review.rating ? "filled" : ""}>
+                                        &#9733;
+                                    </span>
+                                ))}
+                            </div>
+                            <p>{review.comment}</p>
                         </li>
                     ))}
                 </ul>
