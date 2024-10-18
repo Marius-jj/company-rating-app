@@ -1,3 +1,5 @@
+"use client"; // This must be at the top to mark it as a Client Component
+
 import React, { useState } from "react";
 
 type Rating = {

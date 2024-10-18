@@ -1,16 +1,14 @@
-"use client"; // Add this if the parent component needs to be a Client Component
+"use client"; // This is necessary if the parent component uses client-side hooks
 
-import React from "react";
-import RatingForm from "./components/RatingForm";
-import RatingList from "./components/RatingList";
+import React from 'react';
+import RatingForm from './components/RatingForm';
 
 const HomePage: React.FC = () => {
   return (
-    <main>
-      <h1>Rate Your Company</h1>
+    <div>
+      <h1>Submit Your Company Review</h1>
       <RatingForm />
-      <RatingList />
-    </main>
+    </div>
   );
 };
 
